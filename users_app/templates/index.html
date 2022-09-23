@@ -9,13 +9,22 @@
 </head>
 <style>
     body {
-        background-color: rgb(159, 188, 162);
+        background-color: rgb(177, 190, 178);
+    }
+    .border-top {
+        border-width:2px !important;
+        width: 80%;
+        border-radius: 8px;
+    }
+    h1 {
+        margin: 0 auto;
+        margin-bottom: 30px;
     }
 </style>
 <body>
-    <h1 class="text-center">All The Users</h1>
+    <h1 class="text-center pt-3">All The Users</h1>
     <div class="container">
-    <table class="table border w-100 table-bordered table-striped table-hover table-light overflow-hidden h-50">
+    <table class="table border w-100 table-bordered table-striped table-hover table-light overflow-hidden h-50 ">
         <tr class="table-active">
             <th scope="col">id</th>
             <th scope="col">First Name</th>
@@ -29,36 +38,38 @@
     </tr>
     {%endfor%}
     </table>
-    <h1 class="text-center">Add A User</h1>
+    <h1 class="text-center border-top border-dark pt-2">Add A User</h1>
     <div class="container">
     <form action='/add_user' method='post'>
     {% csrf_token %}
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="first_name">First Name: </label>
+            <label for="first_name" class="font-weight-bold">First Name: </label>
             <input class="form-control" id="first_name" type="text" name="first_name">
         </div>
         <div class="form-group col-md-6">
-            <label for="last_name">Last Name: </label>
+            <label for="last_name" class="font-weight-bold">Last Name: </label>
             <input class="form-control" id="last_name" type="text" name="last_name">
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="email">Email: </label>
+            <label for="email" class="font-weight-bold">Email: </label>
             <input class="form-control" id="email" type="text" name="email">
         </div>
         <div class="form-group col-md-6">
-            <label for="age">Age: </label>
+            <label for="age" class="font-weight-bold">Age: </label>
             <input class="form-control" id="age" type="number" required name="age">
         </div>
     </div>
     <div class="text-center">
-    <button class="btn border btn-outline col-2 btn-outline-secondary color-black" type="submit">Add</button>
-    <button class="btn border btn-outline col-2 btn-outline-secondary color-black" type="submit">Delete All Users</button>
+    <button class="font-weight-bold btn border btn-outline col-2 btn-outline-success color-black mb-3" type="submit">Add</button>
     </div>
     </form>
-
+    <form class="text-center" action='/delete_all' method="POST">
+    {% csrf_token %}
+    <button name="delete_all" class="font-weight-bold btn border btn-outline col-2 btn-outline-danger" type="submit">Delete All Users</button>
+    </form>
 </div>
 </body>
 </html>
